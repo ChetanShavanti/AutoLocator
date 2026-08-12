@@ -1,10 +1,17 @@
-import { copyFileSync, mkdirSync, cpSync, existsSync } from 'node:fs';
+import { copyFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
 const dist = join(root, 'dist');
+
+const REQUIRED_ICONS = [
+  'icon_16x16.png',
+  'icon_32x32.png',
+  'icon_48x48.png',
+  'icon_128x128.png',
+];
 
 mkdirSync(dist, { recursive: true });
 
@@ -41,15 +48,19 @@ const manifest = {
   },
 };
 
-copyFileSync(join(root, 'manifest.json'), join(dist, 'manifest.json.backup'));
-
-import { writeFileSync } from 'node:fs';
 writeFileSync(join(dist, 'manifest.json'), JSON.stringify(manifest, null, 2));
 
-if (existsSync(join(root, 'src', 'icons'))) {
-  cpSync(join(root, 'src', 'icons'), join(dist, 'icons'), { recursive: true });
-} else {
-  console.warn('Warning: src/icons not found — extension icons will be missing from dist/.');
+const iconsSrc = join(root, 'src', 'icons');
+const iconsDist = join(dist, 'icons');
+mkdirSync(iconsDist, { recursive: true });
+
+for (const iconName of REQUIRED_ICONS) {
+  const srcPath = join(iconsSrc, iconName);
+  if (!existsSync(srcPath)) {
+    console.warn(`Warning: missing required icon ${iconName}`);
+    continue;
+  }
+  copyFileSync(srcPath, join(iconsDist, iconName));
 }
 
-console.log('Manifest and icons copied to dist/');
+console.log('Manifest and required icons copied to dist/');

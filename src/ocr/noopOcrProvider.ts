@@ -16,7 +16,7 @@ import type { OcrProvider, OcrTextRegion } from './ocrProvider';
 /**
  * No-op OCR provider used when OCR is disabled or unavailable.
  */
-export class NoopOcrProvider implements OcrProvider {
+class NoopOcrProvider implements OcrProvider {
   readonly name = 'noop';
 
   isAvailable(): boolean {

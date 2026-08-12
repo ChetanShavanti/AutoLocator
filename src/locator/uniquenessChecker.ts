@@ -16,7 +16,7 @@ import type { LocatorCandidate, UniquenessContext } from '../shared/types';
 /**
  * Returns the number of elements matched by a candidate in the document.
  */
-export function countMatches(
+function countMatches(
   candidate: LocatorCandidate,
   context: UniquenessContext,
 ): number {
@@ -28,13 +28,6 @@ export function countMatches(
   } catch {
     return Number.MAX_SAFE_INTEGER;
   }
-}
-
-/**
- * Returns true when a candidate matches exactly one element.
- */
-export function isUnique(candidate: LocatorCandidate, context: UniquenessContext): boolean {
-  return countMatches(candidate, context) === 1;
 }
 
 /**

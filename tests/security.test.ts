@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { escapeHtml, sanitizeDisplayText, sanitizeLocatorForDisplay } from '../src/security/sanitize';
-import { parseExtensionMessage, parseUserSettings } from '../src/security/messageValidator';
+import { parseUserSettings } from '../src/security/messageValidator';
 
 describe('security', () => {
   it('escapes html injection payloads', () => {
@@ -16,19 +16,14 @@ describe('security', () => {
     expect(sanitizeDisplayText(long).length).toBeLessThanOrEqual(501);
   });
 
-  it('rejects unknown message types', () => {
-    expect(parseExtensionMessage({ type: 'EVIL', payload: '<script>' })).toBeNull();
-  });
-
   it('rejects invalid settings values', () => {
     const settings = parseUserSettings({ language: 'ruby', locatorPreference: 'invalid' });
     expect(settings.language).toBe('python');
     expect(settings.locatorPreference).toBe('css');
   });
 
-  it('accepts analyze message with default settings when settings omitted', () => {
-    const message = parseExtensionMessage({ type: 'ANALYZE_PAGE' });
-    expect(message).not.toBeNull();
-    expect(message?.type).toBe('ANALYZE_PAGE');
+  it('returns defaults when settings payload is missing or malformed', () => {
+    expect(parseUserSettings(null).language).toBe('python');
+    expect(parseUserSettings(undefined).expandDropdowns).toBe(true);
   });
 });

@@ -111,7 +111,7 @@ AutoLocator/
 │   │   └── sanitize.ts
 │   ├── shared/
 │   │   ├── constants.ts
-│   │   ├── messages.ts
+│   │   ├── extensionMeta.ts
 │   │   └── types.ts
 │   ├── storage/
 │   │   └── settingsStorage.ts
@@ -120,7 +120,7 @@ AutoLocator/
     ├── health.test.ts              # Daily smoke / project health checks
     ├── setup.ts
     ├── actionableClassifier.test.ts
-    ├── dropdownAnalyzer.test.ts
+    ├── dropdownExpander.test.ts
     ├── generators.test.ts
     ├── locatorEngine.test.ts
     ├── locatorScorer.test.ts
@@ -146,13 +146,14 @@ No `host_permissions`, `tabs`, `cookies`, `history`, or network permissions.
 
 ---
 
-## Message Catalog
+## Data Flow
 
-| Message | Direction | Payload |
-|---------|-----------|---------|
-| `GET_SETTINGS` | UI → background | none |
-| `SAVE_SETTINGS` | UI → background | `UserSettings` |
-| Analysis | popup → page (executeScript) | `UserSettings` in function args |
+| Step | Mechanism | Payload |
+|------|-----------|---------|
+| Settings | UI → `chrome.storage.local` via `settingsStorage.ts` | `UserSettings` |
+| Analysis | popup/sidepanel → page (`executeScript`) | `UserSettings` in function args |
+| Session restore | UI ↔ `chrome.storage.session` | per-tab `AnalysisResult` |
+| Tab cleanup | service worker on `tabs.onRemoved` | tab id only |
 
 Analysis results return directly from `executeScript` — not routed through the service worker.
 
@@ -213,9 +214,9 @@ Untrusted Web Page
         ⇅ DOM read / limited safe interaction
 Content Script (isolated world)
         ⇅ executeScript return value (structured JSON)
-Popup UI (trusted extension origin)
-        ⇅ validated messages
-Service Worker (settings only)
+Popup / Side Panel UI (trusted extension origin)
+        ⇅ chrome.storage (validated settings)
+Service Worker (tab session cleanup only)
 ```
 
 ---
@@ -224,7 +225,7 @@ Service Worker (settings only)
 
 | Module | Role |
 |--------|------|
-| `ocr/ocrProvider.ts` | Interface + mapping helper |
+| `ocr/ocrProvider.ts` | Interface for future OCR implementations |
 | `ocr/noopOcrProvider.ts` | Default disabled implementation |
 
 OCR is not active in MVP. Architecture allows future local OCR without coupling the locator engine.

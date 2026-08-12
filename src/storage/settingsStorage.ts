@@ -13,7 +13,7 @@
 
 import { SETTINGS_STORAGE_KEY } from '../shared/constants';
 import { parseUserSettings } from '../security/messageValidator';
-import { DEFAULT_SETTINGS, type UserSettings } from '../shared/types';
+import type { UserSettings } from '../shared/types';
 
 /**
  * Loads user settings from extension storage.
@@ -28,11 +28,4 @@ export async function loadSettings(): Promise<UserSettings> {
  */
 export async function saveSettings(settings: UserSettings): Promise<void> {
   await chrome.storage.local.set({ [SETTINGS_STORAGE_KEY]: settings });
-}
-
-/**
- * Returns default settings when storage is empty.
- */
-export function getDefaultSettings(): UserSettings {
-  return { ...DEFAULT_SETTINGS };
 }

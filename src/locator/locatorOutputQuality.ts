@@ -126,19 +126,3 @@ export function shouldSkipOutputEntry(name: string, locator: string): boolean {
   }
   return false;
 }
-
-/**
- * Picks the better of two locators sharing the same selector string.
- */
-export function preferLocator(
-  current: { name: string; elementType: string },
-  candidate: { name: string; elementType: string },
-): boolean {
-  if (isGenericName(current.name) && !isGenericName(candidate.name)) {
-    return true;
-  }
-  if (current.name.length < candidate.name.length && !isGenericName(candidate.name)) {
-    return true;
-  }
-  return false;
-}

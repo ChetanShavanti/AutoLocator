@@ -38,21 +38,3 @@ export function applyTypePrefix(kind: ElementKind, name: string): string {
   }
   return `${prefix}${name}`;
 }
-
-/**
- * Builds a dropdown control name such as DD_Job_Title.
- */
-export function buildDropdownControlName(baseName: string): string {
-  if (baseName.startsWith('DD_')) {
-    return baseName;
-  }
-  return `DD_${baseName}`;
-}
-
-/**
- * Builds a dropdown option name such as DD_Job_Title_Engineer.
- */
-export function buildDropdownOptionName(controlName: string, optionName: string): string {
-  const normalizedControl = controlName.startsWith('DD_') ? controlName : `DD_${controlName}`;
-  return `${normalizedControl}_${optionName}`;
-}

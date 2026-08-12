@@ -42,30 +42,17 @@ async function init(): Promise<void> {
 function renderDeveloperSection(): void {
   const titleEl = document.getElementById('developerTitle');
   const summaryEl = document.getElementById('developerSummary');
-  const highlightsEl = document.getElementById('developerHighlights');
   const linkedInEl = document.getElementById('developerLinkedIn') as HTMLAnchorElement;
-  const githubEl = document.getElementById('developerGitHub') as HTMLAnchorElement;
   const privacyEl = document.getElementById('privacyLink') as HTMLAnchorElement;
 
   if (titleEl) {
-    titleEl.textContent = `${DEVELOPER.title} · ${DEVELOPER.company} · ${DEVELOPER.location}`;
+    titleEl.textContent = `${DEVELOPER.title} · ${DEVELOPER.location}`;
   }
   if (summaryEl) {
     summaryEl.textContent = DEVELOPER.summary;
   }
-  if (highlightsEl) {
-    highlightsEl.textContent = '';
-    for (const highlight of DEVELOPER.highlights) {
-      const item = document.createElement('li');
-      item.textContent = highlight;
-      highlightsEl.appendChild(item);
-    }
-  }
   if (linkedInEl) {
     linkedInEl.href = DEVELOPER.linkedInUrl;
-  }
-  if (githubEl) {
-    githubEl.href = DEVELOPER.githubUrl;
   }
   if (privacyEl) {
     privacyEl.href = DEVELOPER.privacyPolicyUrl;

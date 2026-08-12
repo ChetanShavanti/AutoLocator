@@ -89,20 +89,3 @@ function derivePatternName(key: string): string {
   const cleaned = key.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '');
   return `${cleaned || 'reusable'}_pattern`;
 }
-
-/**
- * Applies detected patterns to simplify generated output when beneficial.
- */
-export function applyPatternsToLocators(
-  locators: NamedLocator[],
-  patterns: PatternTemplate[],
-): { locators: NamedLocator[]; patterns: PatternTemplate[] } {
-  if (patterns.length === 0) {
-    return { locators, patterns: [] };
-  }
-
-  const patternNames = new Set(patterns.flatMap((p) => p.elementNames));
-  const filtered = locators.filter((loc) => !patternNames.has(loc.name));
-
-  return { locators: filtered, patterns };
-}

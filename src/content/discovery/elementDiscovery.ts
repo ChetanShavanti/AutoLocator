@@ -197,10 +197,3 @@ function isDisabledElement(element: Element): boolean {
   }
   return element.getAttribute('aria-disabled') === 'true';
 }
-
-/**
- * Resolves a discovered element by its analysis index.
- */
-export function resolveElementByIndex(index: number, elements: Element[]): Element | null {
-  return elements[index] ?? null;
-}

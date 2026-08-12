@@ -20,7 +20,7 @@ Load `dist/` unpacked in Chrome and manually verify:
 - [ ] Popup opens and **Analyze Page** works on a normal website
 - [ ] Side panel pin (📌) keeps UI open while clicking the page
 - [ ] Settings page opens from footer link
-- [ ] **Developed by** section shows Chetan Shavanti + LinkedIn/GitHub
+- [ ] **Developed by** section shows Chetan Shavanti + LinkedIn
 - [ ] Rating prompt appears after **3 successful analyses** (if not dismissed)
 - [ ] **Rate on Chrome Web Store** opens store reviews tab
 - [ ] Icons appear correctly in toolbar and extension management page

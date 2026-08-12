@@ -14,17 +14,9 @@
 export const DEVELOPER = {
   name: 'Chetan Shavanti',
   title: 'QA & Test Automation Engineer',
-  company: 'Centre for Computational Technologies (CCTech)',
   location: 'Pune, Maharashtra, India',
-  summary:
-    'Member of Technical Staff at CCTech with 3+ years in software quality assurance. Experienced in manual and automated testing (Playwright, TestComplete), defect management, CI/CD, and building practical tools for QA engineers.',
-  highlights: [
-    'QA for enterprise products including Autodesk InfraWorks',
-    'Manual testing, regression cycles, Scrum coordination, and test automation',
-    'Builds local-first browser tools — including AutoLocator for automation-ready locators',
-  ],
+  summary: 'Builds practical browser tools for QA engineers, including AutoLocator.',
   linkedInUrl: 'https://www.linkedin.com/in/chetan-shavanti/',
-  githubUrl: 'https://github.com/ChetanShavanti/AutoLocator',
   privacyPolicyUrl: 'https://github.com/ChetanShavanti/AutoLocator/blob/main/PRIVACY.md',
   supportUrl: 'https://github.com/ChetanShavanti/AutoLocator/issues',
 } as const;
@@ -46,7 +38,7 @@ Features:
 
 Permissions are minimal: activeTab, scripting, storage, and sidePanel only.
 
-Developed by Chetan Shavanti — QA & test automation engineer.
+Developed by Chetan Shavanti.
 Privacy policy: ${DEVELOPER.privacyPolicyUrl}`;
 
 /**

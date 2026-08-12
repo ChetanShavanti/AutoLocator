@@ -115,11 +115,6 @@ export interface AnalysisResult {
   warnings: string[];
 }
 
-export interface AnalysisError {
-  code: string;
-  message: string;
-}
-
 export interface UniquenessContext {
   /** Returns match count for a CSS selector in the document. */
   countCss: (selector: string) => number;

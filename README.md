@@ -56,7 +56,7 @@ See [CHROME_WEB_STORE.md](./CHROME_WEB_STORE.md) for the full submission checkli
 ## Developer
 
 **Chetan Shavanti** — QA & Test Automation Engineer  
-[LinkedIn](https://www.linkedin.com/in/chetan-shavanti/) · [GitHub](https://github.com/ChetanShavanti/AutoLocator)
+[LinkedIn](https://www.linkedin.com/in/chetan-shavanti/)
 
 ## License
 

@@ -80,14 +80,3 @@ export function isUserEnteredValue(text: string): boolean {
   }
   return false;
 }
-
-/**
- * Returns true when a class list appears dominated by generated tokens.
- */
-export function hasSuspiciousClasses(classes: string[]): boolean {
-  if (classes.length === 0) {
-    return false;
-  }
-  const suspiciousCount = classes.filter(isSuspiciousIdentifier).length;
-  return suspiciousCount / classes.length >= 0.5;
-}

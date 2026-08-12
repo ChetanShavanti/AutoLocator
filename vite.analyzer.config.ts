@@ -9,6 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
  * for injection via chrome.scripting.executeScript.
  */
 export default defineConfig({
+  publicDir: false,
   build: {
     outDir: 'dist/content',
     emptyOutDir: true,

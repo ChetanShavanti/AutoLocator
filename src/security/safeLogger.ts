@@ -20,18 +20,6 @@ const SENSITIVE_PATTERNS = [
 ];
 
 /**
- * Logs an internal diagnostic message with redacted metadata.
- */
-export function logInternal(message: string, meta?: Record<string, unknown>): void {
-  if (meta) {
-    const safeMeta = redactMeta(meta);
-    console.info(`[AutoLocator] ${message}`, safeMeta);
-    return;
-  }
-  console.info(`[AutoLocator] ${message}`);
-}
-
-/**
  * Logs an internal error without page HTML or secrets.
  */
 export function logInternalError(message: string, meta?: Record<string, unknown>): void {
