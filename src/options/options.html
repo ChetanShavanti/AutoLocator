@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoLocator Settings</title>
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <main class="options">
+      <h1>AutoLocator Settings</h1>
+      <p class="intro">
+        AutoLocator analyzes the visible page locally to generate automation locators.
+        No page content is uploaded by default.
+      </p>
+
+      <section aria-labelledby="prefs-heading">
+        <h2 id="prefs-heading">Preferences</h2>
+
+        <label class="field">
+          <span>Default output language</span>
+          <select id="language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="typescript">JavaScript / TypeScript</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Default locator preference</span>
+          <select id="locatorPreference">
+            <option value="css">CSS</option>
+            <option value="xpath">XPath</option>
+          </select>
+        </label>
+
+        <label class="field checkbox-field">
+          <input id="expandDropdowns" type="checkbox" checked />
+          <span>Expand dropdowns to find hidden options (local, no external AI)</span>
+        </label>
+      </section>
+
+      <section aria-labelledby="permissions-heading">
+        <h2 id="permissions-heading">Permissions</h2>
+        <ul class="permissions">
+          <li><strong>activeTab</strong> — Analyze only the tab you invoke the extension on.</li>
+          <li><strong>scripting</strong> — Inject the analyzer when you click Analyze Page.</li>
+          <li><strong>storage</strong> — Save your language and locator preferences locally.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="privacy-heading">
+        <h2 id="privacy-heading">Privacy</h2>
+        <p>
+          Analysis runs in your browser. AutoLocator does not transmit page HTML, screenshots,
+          or browsing history to external services in this MVP build.
+        </p>
+      </section>
+
+      <div id="status" class="status" role="status"></div>
+      <button id="saveBtn" type="button">Save Settings</button>
+    </main>
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>

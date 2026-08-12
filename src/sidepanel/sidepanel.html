@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoLocator</title>
+    <link rel="stylesheet" href="../popup/popup.css" />
+  </head>
+  <body class="sidepanel">
+    <main class="popup">
+      <header class="header">
+        <h1>AutoLocator</h1>
+        <p class="subtitle">Pinned panel — stays open while you browse</p>
+      </header>
+
+      <section class="settings" aria-label="Analysis settings">
+        <label class="field">
+          <span>Language</span>
+          <select id="language" aria-label="Output language">
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="typescript">JavaScript / TypeScript</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Locator preference</span>
+          <select id="locatorPreference" aria-label="Locator preference">
+            <option value="css">CSS</option>
+            <option value="xpath">XPath</option>
+          </select>
+        </label>
+        <label class="field checkbox-field">
+          <input id="expandDropdowns" type="checkbox" checked />
+          <span>Expand dropdowns to find hidden options</span>
+        </label>
+      </section>
+
+      <div class="actions">
+        <button id="analyzeBtn" type="button" class="primary">Analyze Page</button>
+        <div class="actions-row">
+          <button id="copyAllBtn" type="button" class="secondary" disabled>Copy All Locators</button>
+          <button id="clearBtn" type="button" class="secondary" disabled>Clear</button>
+        </div>
+      </div>
+
+      <label class="filter field">
+        <span>Filter results</span>
+        <input id="filterInput" type="search" placeholder="Search by name, section, or type" />
+      </label>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <div id="results" class="results" aria-label="Analysis results"></div>
+
+      <footer class="footer">
+        <a id="optionsLink" href="#">Settings</a>
+      </footer>
+    </main>
+    <script type="module" src="./sidepanel.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "autolocator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "tsc --noEmit && vite build && vite build --config vite.popup.config.ts && vite build --config vite.sidepanel.config.ts && vite build --config vite.options.config.ts && vite build --config vite.analyzer.config.ts && node scripts/copy-manifest.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^26.2.0",
+    "happy-dom": "^15.11.7",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  }
+}
