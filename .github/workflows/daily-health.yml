@@ -1,0 +1,54 @@
+name: Daily Health Check
+
+on:
+  schedule:
+    # 06:00 UTC daily (~11:30 IST)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  daily-health:
+    name: Daily health
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run full health suite
+        run: npm run health
+
+      - name: Write health summary
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            STATUS="Healthy"
+            DETAIL="All daily checks passed."
+          else
+            STATUS="Unhealthy"
+            DETAIL="One or more health checks failed. Review the workflow logs."
+          fi
+          {
+            echo "### AutoLocator Daily Health: ${STATUS}"
+            echo ""
+            echo "${DETAIL}"
+            echo ""
+            echo "| Check | Command |"
+            echo "|-------|---------|"
+            echo "| Icons | \`npm run icons\` |"
+            echo "| TypeScript | \`npm run lint\` |"
+            echo "| Tests | \`npm test\` |"
+            echo "| Build | \`npm run build\` |"
+            echo ""
+            echo "Run locally: \`npm run health\`"
+          } >> "$GITHUB_STEP_SUMMARY"

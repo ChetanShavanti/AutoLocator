@@ -1,20 +1,25 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
+/**
+ * Validates that required extension icons exist in src/icons.
+ * Run: npm run icons
+ */
+import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const iconsDir = join(__dirname, '..', 'public', 'icons');
-mkdirSync(iconsDir, { recursive: true });
+const iconsDir = join(__dirname, '..', 'src', 'icons');
 
-// Minimal valid 16x16 blue PNG
-const png = Buffer.from(
-  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAHUlEQVR42mNk+M9Qz0AEYBxVSF+F' +
-    'ApjRMKoAAABJRU5ErkJggg==',
-  'base64',
-);
+const required = ['icon_16x16.png', 'icon_32x32.png', 'icon_48x48.png', 'icon_128x128.png'];
 
-for (const size of [16, 48, 128]) {
-  writeFileSync(join(iconsDir, `icon${size}.png`), png);
+if (!existsSync(iconsDir)) {
+  console.error('Missing directory: src/icons');
+  process.exit(1);
 }
 
-console.log('Icons generated.');
+const missing = required.filter((name) => !existsSync(join(iconsDir, name)));
+if (missing.length > 0) {
+  console.error(`Missing required icons in src/icons: ${missing.join(', ')}`);
+  process.exit(1);
+}
+
+console.log('Required extension icons found in src/icons.');

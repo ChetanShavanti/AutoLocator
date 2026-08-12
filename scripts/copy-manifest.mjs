@@ -22,9 +22,10 @@ const manifest = {
     default_popup: 'src/popup/popup.html',
     default_title: 'AutoLocator',
     default_icon: {
-      '16': 'icons/icon16.png',
-      '48': 'icons/icon48.png',
-      '128': 'icons/icon128.png',
+      16: 'icons/icon_16x16.png',
+      32: 'icons/icon_32x32.png',
+      48: 'icons/icon_48x48.png',
+      128: 'icons/icon_128x128.png',
     },
   },
   background: {
@@ -33,9 +34,10 @@ const manifest = {
   },
   options_page: 'src/options/options.html',
   icons: {
-    '16': 'icons/icon16.png',
-    '48': 'icons/icon48.png',
-    '128': 'icons/icon128.png',
+    16: 'icons/icon_16x16.png',
+    32: 'icons/icon_32x32.png',
+    48: 'icons/icon_48x48.png',
+    128: 'icons/icon_128x128.png',
   },
 };
 
@@ -44,8 +46,10 @@ copyFileSync(join(root, 'manifest.json'), join(dist, 'manifest.json.backup'));
 import { writeFileSync } from 'node:fs';
 writeFileSync(join(dist, 'manifest.json'), JSON.stringify(manifest, null, 2));
 
-if (existsSync(join(root, 'public', 'icons'))) {
-  cpSync(join(root, 'public', 'icons'), join(dist, 'icons'), { recursive: true });
+if (existsSync(join(root, 'src', 'icons'))) {
+  cpSync(join(root, 'src', 'icons'), join(dist, 'icons'), { recursive: true });
+} else {
+  console.warn('Warning: src/icons not found — extension icons will be missing from dist/.');
 }
 
 console.log('Manifest and icons copied to dist/');

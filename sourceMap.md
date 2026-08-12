@@ -39,6 +39,9 @@ No runtime npm dependencies in the extension bundle.
 
 ```text
 AutoLocator/
+├── .github/workflows/            # CI + daily health GitHub Actions
+│   ├── ci.yml
+│   └── daily-health.yml
 ├── AGENTS.md
 ├── codingRules.md
 ├── sourceMap.md
@@ -47,7 +50,7 @@ AutoLocator/
 ├── tsconfig.json
 ├── vite.config.ts
 ├── vitest.config.ts
-├── public/icons/                 # Extension icons
+│   ├── icons/                    # Extension icons (16/32/48/128 PNGs + UI assets)
 ├── scripts/
 │   ├── copy-manifest.mjs         # Writes production manifest to dist/
 │   └── generate-icons.mjs
@@ -114,6 +117,7 @@ AutoLocator/
 │   │   └── settingsStorage.ts
 │   └── vite-env.d.ts
 └── tests/
+    ├── health.test.ts              # Daily smoke / project health checks
     ├── setup.ts
     ├── actionableClassifier.test.ts
     ├── dropdownAnalyzer.test.ts

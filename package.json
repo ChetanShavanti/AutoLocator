@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "tsc --noEmit && vite build && vite build --config vite.popup.config.ts && vite build --config vite.sidepanel.config.ts && vite build --config vite.options.config.ts && vite build --config vite.analyzer.config.ts && node scripts/copy-manifest.mjs",
+    "package:store": "node scripts/package-store.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
+    "health": "npm run icons && npm run lint && npm test && npm run build",
+    "health:quick": "npm run lint && npm test",
     "lint": "tsc --noEmit",
     "icons": "node scripts/generate-icons.mjs"
   },

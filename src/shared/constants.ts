@@ -73,3 +73,10 @@ export const DESTRUCTIVE_KEYWORDS = [
 ] as const;
 
 export const SETTINGS_STORAGE_KEY = 'autolocator_settings';
+export const RATING_PROMPT_STORAGE_KEY = 'autolocator_rating_prompt';
+
+/** Successful analyses before showing the rating prompt. */
+export const RATING_PROMPT_MIN_ANALYSES = 3;
+
+/** Days to wait after "Maybe later" before showing the prompt again. */
+export const RATING_PROMPT_SNOOZE_DAYS = 14;

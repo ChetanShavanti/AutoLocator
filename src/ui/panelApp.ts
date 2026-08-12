@@ -19,6 +19,7 @@ import {
   saveTabResults,
 } from '../storage/sessionResultsStorage';
 import { loadSettings, saveSettings } from '../storage/settingsStorage';
+import { maybeShowRatingPrompt, refreshRatingPrompt } from './ratingPrompt';
 
 export interface PanelAppOptions {
   showPinButton?: boolean;
@@ -39,6 +40,7 @@ export async function initPanelApp(options: PanelAppOptions = {}): Promise<void>
   const optionsLink = document.getElementById('optionsLink') as HTMLAnchorElement;
   const pinBtn = document.getElementById('pinBtn') as HTMLButtonElement | null;
   const expandDropdownsInput = document.getElementById('expandDropdowns') as HTMLInputElement | null;
+  const ratingPromptEl = document.getElementById('ratingPrompt') as HTMLElement | null;
 
   let currentResult: AnalysisResult | null = null;
   let currentTabId: number | null = null;
@@ -69,6 +71,7 @@ export async function initPanelApp(options: PanelAppOptions = {}): Promise<void>
   }
 
   await restoreResultsForActiveTab();
+  await refreshRatingPrompt(ratingPromptEl);
 
   async function restoreResultsForActiveTab(): Promise<void> {
     const tab = await getActiveTab();
@@ -145,6 +148,7 @@ export async function initPanelApp(options: PanelAppOptions = {}): Promise<void>
         setStatus(statusEl, 'No actionable elements found on this page.', 'success');
       } else {
         setStatus(statusEl, `Found ${result.elements.length} actionable elements.`, 'success');
+        await maybeShowRatingPrompt(ratingPromptEl);
       }
     } catch (error) {
       currentResult = null;

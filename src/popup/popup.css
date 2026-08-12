@@ -249,3 +249,33 @@ button:disabled {
 .footer a:hover {
   text-decoration: underline;
 }
+
+.rating-prompt {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.rating-prompt-text {
+  margin: 6px 0 10px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.rating-prompt-actions {
+  display: grid;
+  gap: 6px;
+}
+
+.rating-prompt-actions .primary,
+.rating-prompt-actions .secondary {
+  padding: 8px 10px;
+  font-size: 0.82rem;
+}
+
+.rating-dismiss-btn {
+  opacity: 0.85;
+}
