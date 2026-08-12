@@ -1,6 +1,7 @@
 # AutoLocator Privacy Policy
 
 **Last updated:** August 12, 2026  
+**Public URL:** https://chetanshavanti.github.io/AutoLocator/privacy.html  
 **Contact:** [Chetan Shavanti on LinkedIn](https://www.linkedin.com/in/chetan-shavanti/)
 
 ## Summary

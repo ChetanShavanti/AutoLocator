@@ -41,7 +41,7 @@ describe('project health', () => {
     expect(existsSync(join(root, 'PRIVACY.md'))).toBe(true);
     expect(DEVELOPER.name).toBe('Chetan Shavanti');
     expect(DEVELOPER.linkedInUrl).toContain('linkedin.com/in/chetan-shavanti');
-    expect(DEVELOPER.privacyPolicyUrl).toContain('PRIVACY.md');
+    expect(DEVELOPER.privacyPolicyUrl).toContain('privacy.html');
     expect(STORE_SHORT_DESCRIPTION.length).toBeGreaterThan(20);
   });
 

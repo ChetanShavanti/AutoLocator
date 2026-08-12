@@ -17,7 +17,7 @@ export const DEVELOPER = {
   location: 'Pune, Maharashtra, India',
   summary: 'Builds practical browser tools for QA engineers, including AutoLocator.',
   linkedInUrl: 'https://www.linkedin.com/in/chetan-shavanti/',
-  privacyPolicyUrl: 'https://github.com/ChetanShavanti/AutoLocator/blob/main/PRIVACY.md',
+  privacyPolicyUrl: 'https://chetanshavanti.github.io/AutoLocator/privacy.html',
   supportUrl: 'https://github.com/ChetanShavanti/AutoLocator/issues',
 } as const;
 

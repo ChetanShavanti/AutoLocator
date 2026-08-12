@@ -33,7 +33,7 @@ Load `dist/` unpacked in Chrome and manually verify:
 | Manifest V3 | ✅ |
 | Bundled static JS (no remote code) | ✅ |
 | Icons 16 / 32 / 48 / 128 PNG | ✅ `src/icons/` |
-| Privacy policy URL (public) | ✅ [PRIVACY.md](PRIVACY.md) on GitHub |
+| Privacy policy URL (public) | ✅ [privacy.html](https://chetanshavanti.github.io/AutoLocator/privacy.html) via GitHub Pages |
 | Minimal permissions | ✅ `activeTab`, `scripting`, `storage`, `sidePanel` |
 
 **Upload:** contents of `dist/` (zipped via `npm run package:store`).
@@ -49,7 +49,7 @@ Copy from `src/shared/extensionMeta.ts` and `STORE_FULL_DESCRIPTION`:
 | **Description** | See `STORE_FULL_DESCRIPTION` in `extensionMeta.ts` |
 | **Category** | Developer Tools |
 | **Language** | English |
-| **Privacy policy URL** | https://github.com/ChetanShavanti/AutoLocator/blob/main/PRIVACY.md |
+| **Privacy policy URL** | https://chetanshavanti.github.io/AutoLocator/privacy.html |
 | **Homepage URL** | https://github.com/ChetanShavanti/AutoLocator |
 | **Support URL** | https://github.com/ChetanShavanti/AutoLocator/issues |
 | **Single purpose** | Generate automation locators from visible page UI for QA engineers |

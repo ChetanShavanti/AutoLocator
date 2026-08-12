@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoLocator Privacy Policy</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        line-height: 1.6;
+      }
+      body {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 3rem;
+        color: #1f2937;
+        background: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #e5e7eb;
+          background: #111827;
+        }
+        a {
+          color: #93c5fd;
+        }
+        th,
+        td {
+          border-color: #374151;
+        }
+      }
+      h1,
+      h2 {
+        line-height: 1.25;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      th,
+      td {
+        border: 1px solid #d1d5db;
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: rgba(59, 130, 246, 0.08);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AutoLocator Privacy Policy</h1>
+    <p><strong>Last updated:</strong> August 12, 2026</p>
+    <p>
+      <strong>Contact:</strong>
+      <a href="https://www.linkedin.com/in/chetan-shavanti/">Chetan Shavanti on LinkedIn</a>
+    </p>
+
+    <h2>Summary</h2>
+    <p>
+      AutoLocator analyzes web pages <strong>locally in your browser</strong> to generate automation
+      locators. By default, it does <strong>not</strong> send page content, screenshots, or browsing
+      history to external servers.
+    </p>
+
+    <h2>Data AutoLocator accesses</h2>
+    <p>
+      When you click <strong>Analyze Page</strong>, AutoLocator may read the DOM of the
+      <strong>currently active tab</strong> to identify visible, actionable UI elements and generate
+      locators.
+    </p>
+    <p>AutoLocator does <strong>not</strong>:</p>
+    <ul>
+      <li>Read pages unless you trigger analysis</li>
+      <li>Access tabs in the background without your action</li>
+      <li>
+        Collect passwords, cookies, auth tokens, or hidden field values by design (password fields are
+        redacted in output)
+      </li>
+    </ul>
+
+    <h2>Data AutoLocator stores locally</h2>
+    <p>AutoLocator uses <code>chrome.storage</code> on your device to store:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Language and locator preferences</td>
+          <td>Remember your settings</td>
+        </tr>
+        <tr>
+          <td>Per-tab analysis results (session)</td>
+          <td>Restore results when reopening the popup or side panel</td>
+        </tr>
+        <tr>
+          <td>Rating prompt state</td>
+          <td>Avoid repeated rating prompts after you dismiss or rate</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Session results are cleared when the tab is closed.</p>
+
+    <h2>Optional page interaction</h2>
+    <p>
+      If <strong>Expand dropdowns</strong> is enabled, AutoLocator may temporarily open dropdown
+      controls on the page to discover hidden options, then restore the prior state. This happens
+      only when you run analysis.
+    </p>
+
+    <h2>Network activity</h2>
+    <p>AutoLocator does <strong>not</strong> transmit analyzed page data to developer servers.</p>
+    <p>Network use occurs only when <strong>you choose</strong> to open external links, such as:</p>
+    <ul>
+      <li>Chrome Web Store rating page</li>
+      <li>Settings links (Privacy Policy, LinkedIn, GitHub)</li>
+    </ul>
+
+    <h2>Permissions explained</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Permission</th>
+          <th>Why it is needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>activeTab</code></td>
+          <td>Access the current tab only when you invoke the extension</td>
+        </tr>
+        <tr>
+          <td><code>scripting</code></td>
+          <td>Inject the local analyzer script on your Analyze action</td>
+        </tr>
+        <tr>
+          <td><code>storage</code></td>
+          <td>Save preferences and session results locally</td>
+        </tr>
+        <tr>
+          <td><code>sidePanel</code></td>
+          <td>Show the pinned side panel UI</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Children's privacy</h2>
+    <p>AutoLocator is a developer/QA tool and is not directed at children under 13.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      This policy may be updated when functionality or data handling changes. Updates will be
+      published in the
+      <a href="https://github.com/ChetanShavanti/AutoLocator">GitHub repository</a>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about privacy:
+      <a href="https://www.linkedin.com/in/chetan-shavanti/">linkedin.com/in/chetan-shavanti</a>
+    </p>
+  </body>
+</html>
